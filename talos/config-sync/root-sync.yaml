@@ -1,0 +1,12 @@
+# root-sync.yaml
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: lab-sync
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
+  git:
+    repo: https://github.com/JordanDeBeer/lab
+    branch: main
+    dir: talos/config-sync
