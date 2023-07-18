@@ -9,4 +9,4 @@ spec:
   git:
     repo: https://github.com/JordanDeBeer/lab
     branch: main
-    dir: talos/config-sync
+    dir: kubernetes/manifests
