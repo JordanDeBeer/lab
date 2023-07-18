@@ -10,3 +10,4 @@ spec:
     repo: https://github.com/JordanDeBeer/lab
     branch: main
     dir: kubernetes/manifests
+    auth: none
