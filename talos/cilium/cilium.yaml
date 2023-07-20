@@ -445,7 +445,7 @@ data:
   enable-k8s-networkpolicy: "true"
   enable-k8s-terminating-endpoint: "true"
   enable-l2-neigh-discovery: "true"
-  enable-l7-proxy: "true"
+  enable-l7-proxy: "false"
   enable-local-redirect-policy: "true"
   enable-policy: default
   enable-remote-node-identity: "true"
@@ -539,7 +539,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: 1296521f76462c4774ecb3c6e35c363a96fcc46e745bd30626920ecdbfcf023e
+        cilium.io/cilium-configmap-checksum: 165f0760314fb3d6cb9f8dab03d500e83abc650ea3d99f6050f88d45f5ec2986
         meta.helm.sh/release-name: cilium
         meta.helm.sh/release-namespace: kube-system
       labels:
@@ -647,7 +647,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: 1296521f76462c4774ecb3c6e35c363a96fcc46e745bd30626920ecdbfcf023e
+        cilium.io/cilium-configmap-checksum: 165f0760314fb3d6cb9f8dab03d500e83abc650ea3d99f6050f88d45f5ec2986
         container.apparmor.security.beta.kubernetes.io/cilium-agent: unconfined
         container.apparmor.security.beta.kubernetes.io/clean-cilium-state: unconfined
         meta.helm.sh/release-name: cilium
