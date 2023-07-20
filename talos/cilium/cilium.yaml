@@ -429,7 +429,7 @@ data:
   enable-auto-protect-node-port-range: "true"
   enable-bandwidth-manager: "true"
   enable-bbr: "true"
-  enable-bgp-control-plane: "false"
+  enable-bgp-control-plane: "true"
   enable-bpf-clock-probe: "true"
   enable-bpf-masquerade: "true"
   enable-bpf-tproxy: "true"
@@ -445,7 +445,7 @@ data:
   enable-k8s-networkpolicy: "true"
   enable-k8s-terminating-endpoint: "true"
   enable-l2-neigh-discovery: "true"
-  enable-l7-proxy: "false"
+  enable-l7-proxy: "true"
   enable-local-redirect-policy: "true"
   enable-policy: default
   enable-remote-node-identity: "true"
@@ -539,7 +539,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: 39b5db8e726c8c98108d3962c6f4bfdfff5398a2008ec8822c392d8986e23bdb
+        cilium.io/cilium-configmap-checksum: 1296521f76462c4774ecb3c6e35c363a96fcc46e745bd30626920ecdbfcf023e
         meta.helm.sh/release-name: cilium
         meta.helm.sh/release-namespace: kube-system
       labels:
@@ -647,7 +647,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: 39b5db8e726c8c98108d3962c6f4bfdfff5398a2008ec8822c392d8986e23bdb
+        cilium.io/cilium-configmap-checksum: 1296521f76462c4774ecb3c6e35c363a96fcc46e745bd30626920ecdbfcf023e
         container.apparmor.security.beta.kubernetes.io/cilium-agent: unconfined
         container.apparmor.security.beta.kubernetes.io/clean-cilium-state: unconfined
         meta.helm.sh/release-name: cilium
