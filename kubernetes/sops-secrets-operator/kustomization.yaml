@@ -4,12 +4,14 @@ kind: Kustomization
 helmCharts:
   - name: sops-secrets-operator
     repo: https://isindir.github.io/sops-secrets-operator/
-    releaseName: sops/sops-secrets-operator
+    releaseName: sops-secrets-operator
     namespace: sops
     valuesInline:
       extraEnv:
-        SOPS_AGE_RECIPIENTS: age1nfmgqg5wzxnztmhdqt4g9k9l3qk7hsj86qf3u0xy685nwh489duqedf07m
-        SOPS_AGE_KEY_FILE: "/mnt/keys.txt"
+        - name: SOPS_AGE_RECIPIENTS
+          value: age1nfmgqg5wzxnztmhdqt4g9k9l3qk7hsj86qf3u0xy685nwh489duqedf07m
+        - name: SOPS_AGE_KEY_FILE
+          value: "/mnt/keys.txt"
       secretsAsFiles:
         - name: age-keys
           mountPath: "/mnt/keys.txt"
