@@ -4,12 +4,14 @@ kind: Kustomization
 patchesJson6902:
   - target:
       name: sops-secrets-operator
-      kind: .*
+      kind: Deployment
       version: .*
-    patch: |-
-      - op: add
-        path: /metadata/namespace
-        value: sops
+    path: sops-namespace-patch.yaml
+  - target:
+      name: sops-secrets-operator
+      kind: ServiceAccount
+      version: .*
+    path: sops-namespace-patch.yaml
 helmCharts:
   - name: sops-secrets-operator
     repo: https://isindir.github.io/sops-secrets-operator/
