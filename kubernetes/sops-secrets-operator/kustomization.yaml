@@ -27,5 +27,5 @@ helmCharts:
           value: "/mnt/keys.txt"
       secretsAsFiles:
         - name: age-keys
-          mountPath: "/mnt/keys.txt"
+          mountPath: "/mnt/"
           secretName: age-keys
