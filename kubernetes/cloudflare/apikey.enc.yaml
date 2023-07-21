@@ -1,33 +1,31 @@
 apiVersion: isindir.github.com/v1alpha3
 kind: SopsSecret
 metadata:
-    name: cloudflare-api-key
-    namespace: sops
+  name: cloudflare-api-key
+  namespace: cert-manager
 spec:
-    secretTemplates:
-        - name: ENC[AES256_GCM,data:KDmbeEDbvDqDJxA8XqiDhnb2,iv:l/tldz8JCFdar/qY5W/K++oAY6us0kgAc6iRhzTq+6A=,tag:I+ssNoVUNZB3+FHexA9kmQ==,type:str]
-          metadata:
-            namespace: ENC[AES256_GCM,data:34MFrG5k3epGsxkb,iv:tMM2BPhTWM8EAVeLQ+L/YzQFoA00jxJwtsbvkyx86YQ=,tag:+t9DMkvo8nE82XVkqKR23w==,type:str]
-          stringData:
-            email: ENC[AES256_GCM,data:Fd6GT4Cc5dJMrkbvKz2uagq/KVjEIjo=,iv:qaaB4f7Q5QgdV9uKIbDto5bFbytcEXXKZqzGnU5Xg3U=,tag:5ZAha7n4W8BKgWwQjMiwMw==,type:str]
-            api-key: ENC[AES256_GCM,data:p0zo6EvN/vz1ZIa75sg3pyVRqNjMwX/0rN9i8q2AuFUvR5lL7ue87g==,iv:7+lQQgGY1jc1Z76QyWT5G8rLBClH8ImJTpXMvvJpcZg=,tag:NpXOSgtSeirJW5UpfBnSuQ==,type:str]
+  secretTemplates:
+    - name: ENC[AES256_GCM,data:KDmbeEDbvDqDJxA8XqiDhnb2,iv:l/tldz8JCFdar/qY5W/K++oAY6us0kgAc6iRhzTq+6A=,tag:I+ssNoVUNZB3+FHexA9kmQ==,type:str]
+      stringData:
+        email: ENC[AES256_GCM,data:Fd6GT4Cc5dJMrkbvKz2uagq/KVjEIjo=,iv:qaaB4f7Q5QgdV9uKIbDto5bFbytcEXXKZqzGnU5Xg3U=,tag:5ZAha7n4W8BKgWwQjMiwMw==,type:str]
+        api-key: ENC[AES256_GCM,data:p0zo6EvN/vz1ZIa75sg3pyVRqNjMwX/0rN9i8q2AuFUvR5lL7ue87g==,iv:7+lQQgGY1jc1Z76QyWT5G8rLBClH8ImJTpXMvvJpcZg=,tag:NpXOSgtSeirJW5UpfBnSuQ==,type:str]
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age1nfmgqg5wzxnztmhdqt4g9k9l3qk7hsj86qf3u0xy685nwh489duqedf07m
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB5RnBydVdqWmp2V3Zsb0Yz
-            NUFZWmhxOUZRbWxKUzZ0c2lKOW5ZMXFnT1hVCmtVa1dmWGUvVCs1NVk2YXpwbUpS
-            aGErT1p5cEI1NjBRQ3o3MGJiczNpS1kKLS0tIE5RUUJ5cGYvNk9lTmY0T0liWXFI
-            djRmeGpiRXVETnNydm5lS1dVWlpJdzQKafLdaQFwiezimyAor1UQWJesVHKVqaTm
-            13dJS/x/W6pfEg25X+6RA6GzbSvnn/pZU0KDH18i20TWxGhaArZyvA==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-07-21T23:10:25Z"
-    mac: ENC[AES256_GCM,data:4/2DwSE6x6WIXWXP7RkP/Bg4o+J60pPvVBD40+8sTbJB+EC5I4VGafTF3xHHzeRypjFwZHbK/Rn7WHqIfXcDsY22+mWBv3cliKE3PunDFlmnCDaF4Bs3fz98N4/MuftntGKtvwebxU4BHbZ8awuuh9grx/XINTHwTosPwv+j0Bs=,iv:clX+X1tu++sH3oFlcekk+AbhI/FIdYrwY5qB68oPtMg=,tag:t1QEXaHAALf0LJonuI5h3w==,type:str]
-    pgp: []
-    encrypted_suffix: Templates
-    version: 3.7.3
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1nfmgqg5wzxnztmhdqt4g9k9l3qk7hsj86qf3u0xy685nwh489duqedf07m
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB5RnBydVdqWmp2V3Zsb0Yz
+        NUFZWmhxOUZRbWxKUzZ0c2lKOW5ZMXFnT1hVCmtVa1dmWGUvVCs1NVk2YXpwbUpS
+        aGErT1p5cEI1NjBRQ3o3MGJiczNpS1kKLS0tIE5RUUJ5cGYvNk9lTmY0T0liWXFI
+        djRmeGpiRXVETnNydm5lS1dVWlpJdzQKafLdaQFwiezimyAor1UQWJesVHKVqaTm
+        13dJS/x/W6pfEg25X+6RA6GzbSvnn/pZU0KDH18i20TWxGhaArZyvA==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2023-07-21T23:10:25Z"
+  mac: ENC[AES256_GCM,data:4/2DwSE6x6WIXWXP7RkP/Bg4o+J60pPvVBD40+8sTbJB+EC5I4VGafTF3xHHzeRypjFwZHbK/Rn7WHqIfXcDsY22+mWBv3cliKE3PunDFlmnCDaF4Bs3fz98N4/MuftntGKtvwebxU4BHbZ8awuuh9grx/XINTHwTosPwv+j0Bs=,iv:clX+X1tu++sH3oFlcekk+AbhI/FIdYrwY5qB68oPtMg=,tag:t1QEXaHAALf0LJonuI5h3w==,type:str]
+  pgp: []
+  encrypted_suffix: Templates
+  version: 3.7.3
