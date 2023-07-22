@@ -13,7 +13,7 @@ helmCharts:
         id: "1"
 
       bgpControlPlane:
-        enabled: true
+        enabled: false
 
       ingressController:
         enabled: true
