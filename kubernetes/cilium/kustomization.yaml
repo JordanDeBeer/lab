@@ -32,6 +32,16 @@ helmCharts:
         enabled: true
         bbr: true
 
+      k8sClientRateLimit:
+        qps: 30
+        burst: 60
+
+      l2announcements:
+        enabled: true
+        leaseDuration: "3s"
+        leaseRenewalDeadline: "2s"
+        leaseRetryPeriod: "200ms"
+
       bpf:
         masquerade: true
         tproxy: true
