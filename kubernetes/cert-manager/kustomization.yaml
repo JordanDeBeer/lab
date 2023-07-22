@@ -5,3 +5,4 @@ resources:
   - https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
   - issuer/cloudflare-apikey.enc.yaml
   - issuer/issuers.yaml
+  - certificates/wildcard.yaml
