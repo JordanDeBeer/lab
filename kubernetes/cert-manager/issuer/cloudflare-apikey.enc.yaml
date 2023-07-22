@@ -7,7 +7,6 @@ spec:
   secretTemplates:
     - name: ENC[AES256_GCM,data:KDmbeEDbvDqDJxA8XqiDhnb2,iv:l/tldz8JCFdar/qY5W/K++oAY6us0kgAc6iRhzTq+6A=,tag:I+ssNoVUNZB3+FHexA9kmQ==,type:str]
       stringData:
-        email: ENC[AES256_GCM,data:Fd6GT4Cc5dJMrkbvKz2uagq/KVjEIjo=,iv:qaaB4f7Q5QgdV9uKIbDto5bFbytcEXXKZqzGnU5Xg3U=,tag:5ZAha7n4W8BKgWwQjMiwMw==,type:str]
         api-key: ENC[AES256_GCM,data:p0zo6EvN/vz1ZIa75sg3pyVRqNjMwX/0rN9i8q2AuFUvR5lL7ue87g==,iv:7+lQQgGY1jc1Z76QyWT5G8rLBClH8ImJTpXMvvJpcZg=,tag:NpXOSgtSeirJW5UpfBnSuQ==,type:str]
 sops:
   kms: []
