@@ -11,4 +11,4 @@ spec:
     kind: ClusterIssuer
   commonName: "*.lab.home.jordandebeer.com"
   dnsNames:
-    - "*.lab.jordandebeer.com"
+    - "*.lab.home.jordandebeer.com"
