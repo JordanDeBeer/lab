@@ -18,6 +18,7 @@ helmCharts:
       ingressController:
         enabled: true
         loadbalancerMode: shared
+        defaultSecretNamespace: kube-system
 
       k8sServiceHost: 192.168.3.126
       k8sServicePort: 6443
@@ -36,15 +37,12 @@ helmCharts:
         enabled: true
         bbr: true
 
-      k8sClientRateLimit:
-        qps: 30
-        burst: 60
-
       l2announcements:
         enabled: true
-        leaseDuration: "3s"
-        leaseRenewalDeadline: "2s"
-        leaseRetryPeriod: "200ms"
+        leaseDuration: "120s"
+        leaseRenewalDeadline: "60s"
+        leaseRetryPeriod: "1s"
+        loadBalancer:
 
       bpf:
         masquerade: true
