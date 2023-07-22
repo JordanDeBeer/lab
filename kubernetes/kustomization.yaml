@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - cert-manager
   - sops-secrets-operator
+  - cilium
