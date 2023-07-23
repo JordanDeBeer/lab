@@ -21,7 +21,7 @@ data:
       - hostname: "*.lab.home.jordandebeer.com"
         service: https://cilium-ingress.kube-system.svc.cluster.local
         originRequest:
-          originServerName: "cluster.lab.home.jordandebeer.com"
+          originServerName: "*.lab.home.jordandebeer.com"
       - service: http_status:404
 ---
 apiVersion: apps/v1
