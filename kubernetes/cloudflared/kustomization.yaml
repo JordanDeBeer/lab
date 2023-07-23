@@ -4,9 +4,3 @@ kind: Kustomization
 resources:
   - app.yaml
   - cloudflare-tunndel-secret.enc.yaml
-generatorOptions:
-  disableNameSuffixHash: true
-labels:
-  - pairs:
-      app.kubernetes.io/name: cloudflared
-      app.kubernetes.io/instance: cloudflared
