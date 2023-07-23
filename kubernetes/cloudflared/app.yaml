@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cloudflared
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudflared-tunnel-config
+data:
+  config.yaml: |
+    tunnel: 33b743c2-b02f-466e-9831-8fd6619360ee
+    credentials-file: /etc/cloudflared/creds/credentials.json
+    originRequest:
+      connectTimeout: 30s
+    warp-routing:
+      enabled: false
+
+    ingress:
+      - hostname: "*.lab.home.jordandebeer.com"
+        service: https://cilium-ingress.kube-system.svc.cluster.local
+        originRequest:
+          originServerName: "cluster.lab.home.jordandebeer.com"
+      - service: http_status:404
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflared-deployment
+  namespace: cloudflared
+spec:
+  selector:
+    matchLabels:
+      pod: cloudflared
+  template:
+    metadata:
+      labels:
+        pod: cloudflared
+    spec:
+      containers:
+        - name: cloudflared
+          image: cloudflare/cloudflared:2023.7.1-amd64
+          args:
+            - tunnel
+            - --config
+            - /etc/cloudflared/config/config.yaml
+            - --metrics
+            - 0.0.0.0:9090
+            - run
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "10m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              # Cloudflared has a /ready endpoint which returns 200 if and only if
+              # it has an active connection to the edge.
+              path: /ready
+              port: 9090
+            failureThreshold: 1
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          volumeMounts:
+            - name: config
+              mountPath: /etc/cloudflared/config
+              readOnly: true
+            - name: creds
+              mountPath: /etc/cloudflared/creds
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: cloudflared-tunnel-config
+            items:
+              - key: config.yaml
+                path: config.yaml
+        - name: creds
+          secret:
+            secretName: lab-tunnel-secret
+  replicas: 2

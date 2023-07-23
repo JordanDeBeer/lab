@@ -5,3 +5,4 @@ resources:
   - cert-manager
   - sops-secrets-operator
   - cilium
+  - cloudflared
