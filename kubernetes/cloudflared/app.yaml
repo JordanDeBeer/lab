@@ -10,7 +10,7 @@ metadata:
   namespace: cloudflared
 data:
   config.yaml: |
-    tunnel: 33b743c2-b02f-466e-9831-8fd6619360ee
+    tunnel: d8ad0b55-de41-4ad4-85b2-cd97f80bb9f7
     credentials-file: /etc/cloudflared/creds/credentials.json
     originRequest:
       connectTimeout: 30s
