@@ -17,7 +17,7 @@ machine:
     # Extra certificate subject alternative names for the machine's certificate.
     certSANs:
         - 192.168.3.126
-        - cluster.lab.home.jordandebeer.com
+        - cluster.jordande.beer
     # Used to provide additional options to the kubelet.
     kubelet:
         # The `image` field is an optional reference to an alternative kubelet image.
@@ -32,9 +32,9 @@ machine:
               type: bind
               source: /var/mnt/nvme
               options:
-                - bind
-                - rshared
-                - rw
+                  - bind
+                  - rshared
+                  - rw
     # Provides machine specific network configuration options.
     network:
         disableSearchDomain: true
@@ -42,7 +42,7 @@ machine:
             - interface: eth0
               dhcp: true
               vip:
-                ip: 192.168.3.126
+                  ip: 192.168.3.126
     # Used to provide instructions for installations.
     install:
         # The disk used for installations.
@@ -97,42 +97,42 @@ machine:
         - device: /dev/nvme1n1
           # A list of partitions to create on the disk.
           partitions:
-            # Where to mount the partition.
-            - mountpoint: /var/mnt/nvme
-              # # MachineFiles usage example.
-              # files:
-              #     - content: '...' # The contents of the file.
-              #       permissions: 0o666 # The file's permissions in octal.
-              #       path: /tmp/file.txt # The path of the file.
-              #       op: append # The operation to use
-              # # The `env` field allows for the addition of environment variables.
-              # # Used to configure the machine's time settings.
-              # # Example configuration for cloudflare ntp server.
-              # time:
-              #     disabled: false # Indicates if the time service is disabled for the machine.
-              #     # Specifies time (NTP) servers to use for setting the system time.
-              #     servers:
-              #         - time.cloudflare.com
-              #     bootTimeout: 2m0s # Specifies the timeout when the node time is considered to be in sync unlocking the boot sequence.
-              # # Used to configure the machine's sysctls.
-              # # MachineSysctls usage example.
-              # sysctls:
-              #     kernel.domainname: talos.dev
-              #     net.ipv4.ip_forward: "0"
-              # # Used to configure the machine's sysfs.
-              # # MachineSysfs usage example.
-              # sysfs:
-              #     devices.system.cpu.cpu0.cpufreq.scaling_governor: performance
-              # # Configures the logging system.
-              # logging:
-              #     # Logging destination.
-              #     destinations:
-              #         - endpoint: tcp://1.2.3.4:12345 # Where to send logs. Supported protocols are "tcp" and "udp".
-              #           format: json_lines # Logs format.
-              # # Configures the node labels for the machine.
-              # # node labels example.
-              # nodeLabels:
-              #     exampleLabel: exampleLabelValue
+              # Where to mount the partition.
+              - mountpoint: /var/mnt/nvme
+                # # MachineFiles usage example.
+                # files:
+                #     - content: '...' # The contents of the file.
+                #       permissions: 0o666 # The file's permissions in octal.
+                #       path: /tmp/file.txt # The path of the file.
+                #       op: append # The operation to use
+                # # The `env` field allows for the addition of environment variables.
+                # # Used to configure the machine's time settings.
+                # # Example configuration for cloudflare ntp server.
+                # time:
+                #     disabled: false # Indicates if the time service is disabled for the machine.
+                #     # Specifies time (NTP) servers to use for setting the system time.
+                #     servers:
+                #         - time.cloudflare.com
+                #     bootTimeout: 2m0s # Specifies the timeout when the node time is considered to be in sync unlocking the boot sequence.
+                # # Used to configure the machine's sysctls.
+                # # MachineSysctls usage example.
+                # sysctls:
+                #     kernel.domainname: talos.dev
+                #     net.ipv4.ip_forward: "0"
+                # # Used to configure the machine's sysfs.
+                # # MachineSysfs usage example.
+                # sysfs:
+                #     devices.system.cpu.cpu0.cpufreq.scaling_governor: performance
+                # # Configures the logging system.
+                # logging:
+                #     # Logging destination.
+                #     destinations:
+                #         - endpoint: tcp://1.2.3.4:12345 # Where to send logs. Supported protocols are "tcp" and "udp".
+                #           format: json_lines # Logs format.
+                # # Configures the node labels for the machine.
+                # # node labels example.
+                # nodeLabels:
+                #     exampleLabel: exampleLabelValue
 # Provides cluster specific configuration options.
 cluster:
     # Globally unique identifier for this cluster (base64 encoded random 32 bytes).
@@ -190,20 +190,20 @@ cluster:
             - name: PodSecurity
               # Configuration is an embedded configuration object to be used as the plugin's
               configuration:
-                apiVersion: pod-security.admission.config.k8s.io/v1alpha1
-                defaults:
-                    audit: restricted
-                    audit-version: latest
-                    enforce: baseline
-                    enforce-version: latest
-                    warn: restricted
-                    warn-version: latest
-                exemptions:
-                    namespaces:
-                        - kube-system
-                    runtimeClasses: []
-                    usernames: []
-                kind: PodSecurityConfiguration
+                  apiVersion: pod-security.admission.config.k8s.io/v1alpha1
+                  defaults:
+                      audit: restricted
+                      audit-version: latest
+                      enforce: baseline
+                      enforce-version: latest
+                      warn: restricted
+                      warn-version: latest
+                  exemptions:
+                      namespaces:
+                          - kube-system
+                      runtimeClasses: []
+                      usernames: []
+                  kind: PodSecurityConfiguration
         # Configure the API server audit policy.
         auditPolicy:
             apiVersion: audit.k8s.io/v1
@@ -286,13 +286,13 @@ sops:
     age:
         - recipient: age1nfmgqg5wzxnztmhdqt4g9k9l3qk7hsj86qf3u0xy685nwh489duqedf07m
           enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBna3NTYVZValZNalh3VXVw
-            V0sxcVRwbFR5cTcwR29KT3duK2djNFl0YmdFCjQvbW1ESGwzL0NWYWFkVjArZWI2
-            N3hwd3BCNDJsUkoxc1AxVW95YkJxTHcKLS0tIHh5MnJ4dktma3Nqckh3UnRhdXVR
-            cDZqMHVEY1oyUTgvZXhGeUd6Nzk2aDAKP+4DL2R2QjOaQHkXOes0Wx6e6vLBasN7
-            d6wzmMedHtwwhl5hWWg62scuLeZX0K45I1cbYzwqV9HDd7lYcG9+1A==
-            -----END AGE ENCRYPTED FILE-----
+              -----BEGIN AGE ENCRYPTED FILE-----
+              YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBna3NTYVZValZNalh3VXVw
+              V0sxcVRwbFR5cTcwR29KT3duK2djNFl0YmdFCjQvbW1ESGwzL0NWYWFkVjArZWI2
+              N3hwd3BCNDJsUkoxc1AxVW95YkJxTHcKLS0tIHh5MnJ4dktma3Nqckh3UnRhdXVR
+              cDZqMHVEY1oyUTgvZXhGeUd6Nzk2aDAKP+4DL2R2QjOaQHkXOes0Wx6e6vLBasN7
+              d6wzmMedHtwwhl5hWWg62scuLeZX0K45I1cbYzwqV9HDd7lYcG9+1A==
+              -----END AGE ENCRYPTED FILE-----
     lastmodified: "2023-07-22T03:42:30Z"
     mac: ENC[AES256_GCM,data:coFHoT+8rKPVun3Iy07tK5jWEp3R5AhzaFMA0q57Y/tdPIXq3WhRdXWxqZ6GACEXmLWJBCCEiX3WjtlwbCMTiyNg0vXkpjAoBEcO96jTpz11WHk+7jFOYK2HNWlcHVqThKsoC55pfLQqrfugCeus/npJRoxcs9QKW8wRlXVYe6Q=,iv:XO7tVRpZmW+3DRd5L51YMs4YjEsBTra4Ps83uZbB3ZM=,tag:uHBJX9QrcTKJH7WCniAmng==,type:str]
     pgp: []

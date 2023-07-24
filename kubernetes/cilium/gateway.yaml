@@ -16,7 +16,7 @@ spec:
     - name: https
       protocol: HTTPS
       port: 443
-      hostname: "*.lab.home.jordandebeer.com"
+      hostname: "*.jordande.beer"
       tls:
         certificateRefs:
           - kind: Secret

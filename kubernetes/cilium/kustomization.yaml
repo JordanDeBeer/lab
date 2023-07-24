@@ -126,10 +126,10 @@ helmCharts:
               external-dns.alpha.kubernetes.io/target: "33b743c2-b02f-466e-9831-8fd6619360ee.cfargotunnel.com"
             className: cilium
             hosts:
-              - "hubble.lab.home.jordandebeer.com"
+              - "hubble.jordande.beer"
             tls:
               - hosts:
-                  - "*.lab.home.jordandebeer.com"
+                  - "*.jordande.beer"
                 secretName: wildcard-tls
 
       securityContext:

@@ -36,7 +36,7 @@ metadata:
 spec:
   ingressClassName: cilium
   rules:
-    - host: httpbin.lab.home.jordandebeer.com
+    - host: httpbin.jordande.beer
       http:
         paths:
           - path: /

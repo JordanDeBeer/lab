@@ -18,10 +18,10 @@ data:
       enabled: false
 
     ingress:
-      - hostname: "*.lab.home.jordandebeer.com"
+      - hostname: "*.jordande.beer"
         service: https://cilium-ingress.kube-system.svc.cluster.local.
         originRequest:
-          originServerName: "*.lab.home.jordandebeer.com"
+          originServerName: "*.jordande.beer"
       - service: http_status:404
 ---
 apiVersion: apps/v1
