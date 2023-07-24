@@ -59,9 +59,9 @@ spec:
           image: registry.k8s.io/external-dns/external-dns:v0.13.5
           args:
             - --source=ingress
-            - --source=crd
-            - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
-            - --crd-source-kind=DNSEndpoint
+            #- --source=crd
+            #- --crd-source-apiversion=externaldns.k8s.io/v1alpha1
+            #- --crd-source-kind=DNSEndpoint
             - --domain-filter=jordandebeer.com # (optional) limit to only example.com domains; change to match the zone created above.
             - --provider=cloudflare
             - --cloudflare-proxied # (optional) enable the proxy feature of Cloudflare (DDOS protection, CDN...)
