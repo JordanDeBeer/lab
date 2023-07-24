@@ -7,3 +7,4 @@ resources:
   - cilium
   - cloudflared
   - external-dns
+  - httpbin
