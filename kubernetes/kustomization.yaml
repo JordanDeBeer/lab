@@ -6,3 +6,4 @@ resources:
   - sops-secrets-operator
   - cilium
   - cloudflared
+  - external-dns
