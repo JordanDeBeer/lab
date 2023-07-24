@@ -15,6 +15,9 @@ helmCharts:
       bgpControlPlane:
         enabled: false
 
+      gatewayAPI:
+        enabled: true
+
       ingressController:
         enabled: true
         loadbalancerMode: shared
