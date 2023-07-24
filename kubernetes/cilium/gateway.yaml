@@ -6,7 +6,7 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
-    - name: https-1
+    - name: https
       protocol: HTTPS
       port: 443
       hostname: "*.lab.home.jordandebeer.com"
