@@ -57,7 +57,7 @@ spec:
     - name: tls-gateway
       namespace: kube-system
   hostnames:
-    - httpbin.lab.home.jordandebeer.com
+    - httpbin.jordande.beer
   rules:
     - backendRefs:
         - name: httpbin
