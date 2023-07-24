@@ -45,7 +45,23 @@ spec:
               service:
                 name: httpbin
                 port:
-                  number: 80
+                  number: 8000
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: httproute-example
+  namespace: httpbin
+spec:
+  parentRefs:
+    - name: tls-gateway
+      namespace: kube-system
+  hostnames:
+    - httpbin.lab.home.jordandebeer.com
+  rules:
+    - backendRefs:
+        - name: httpbin
+          port: 8000
 ---
 apiVersion: apps/v1
 kind: Deployment

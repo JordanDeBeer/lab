@@ -21,3 +21,6 @@ spec:
         certificateRefs:
           - kind: Secret
             name: wildcard-tls
+      allowedRoutes:
+        namespaces:
+          from: All
