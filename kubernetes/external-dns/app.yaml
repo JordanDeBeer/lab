@@ -62,7 +62,7 @@ spec:
             #- --source=crd
             #- --crd-source-apiversion=externaldns.k8s.io/v1alpha1
             #- --crd-source-kind=DNSEndpoint
-            - --domain-filter=jordandebeer.com # (optional) limit to only example.com domains; change to match the zone created above.
+            - --domain-filter=jordande.beer # (optional) limit to only example.com domains; change to match the zone created above.
             - --provider=cloudflare
             - --cloudflare-proxied # (optional) enable the proxy feature of Cloudflare (DDOS protection, CDN...)
             - --cloudflare-dns-records-per-page=5000 # (optional) configure how many DNS records to fetch per request
