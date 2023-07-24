@@ -14,11 +14,3 @@ spec:
         certificateRefs:
           - kind: Secret
             name: wildcard-tls
-    - name: https-2
-      protocol: HTTPS
-      port: 443
-      hostname: "hipstershop.cilium.rocks"
-      tls:
-        certificateRefs:
-          - kind: Secret
-            name: demo-cert
