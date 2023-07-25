@@ -8,7 +8,7 @@ resources:
   - https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v0.7.0/config/crd/standard/gateway.networking.k8s.io_referencegrants.yaml
   - https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v0.7.0/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
   - l2.yaml
-  #- gateway.yaml
+  - gateway.yaml
 patches:
   - patch: |-
       - op: remove
@@ -32,7 +32,7 @@ helmCharts:
         enabled: false
 
       gatewayAPI:
-        enabled: false
+        enabled: true
 
       ingressController:
         enabled: true
@@ -123,7 +123,7 @@ helmCharts:
             enabled: true
             annotations:
               external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-              external-dns.alpha.kubernetes.io/target: "33b743c2-b02f-466e-9831-8fd6619360ee.cfargotunnel.com"
+              external-dns.alpha.kubernetes.io/target: "d8ad0b55-de41-4ad4-85b2-cd97f80bb9f7.cfargotunnel.com"
             className: cilium
             hosts:
               - "hubble.jordande.beer"
