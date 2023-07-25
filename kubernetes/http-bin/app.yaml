@@ -76,6 +76,8 @@ spec:
       version: v1
   template:
     metadata:
+      annotations:
+        policy.cilium.io/proxy-visibility: "<Egress/80/TCP/HTTP>,<Ingress/80/TCP/HTTP>"
       labels:
         app: httpbin
         version: v1
