@@ -129,7 +129,7 @@ helmCharts:
               - "hubble.jordande.beer"
             tls:
               - hosts:
-                  - "*.jordande.beer"
+                  - "hubble.jordande.beer"
                 secretName: wildcard-tls
 
       securityContext:
