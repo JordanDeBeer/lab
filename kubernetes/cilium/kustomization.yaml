@@ -20,7 +20,7 @@ patches:
 helmCharts:
   - name: cilium
     repo: https://helm.cilium.io/
-    version: 1.14.0-rc.1
+    version: 1.14.0
     releaseName: cilium
     namespace: kube-system
     valuesInline:
