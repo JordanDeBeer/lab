@@ -1,11 +1,42 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: mayastor
+resources:
+  - ns.yaml
+  - diskpool.yaml
+  - storageclass.yaml
+patches:
+  - patch: |-
+      - op: replace
+        path: /apiVersion
+        value: policy/v1
+    target:
+      group: policy
+      version: v1beta1
+      kind: PodDisruptionBudget
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/tolerations
+        value:
+          - key: node-role.kubernetes.io/control-plane
+            operator: Exists
+            effect: NoSchedule
+    target:
+      kind: DaemonSet
 helmCharts:
   - name: mayastor
     repo: https://openebs.github.io/mayastor-extensions/
     releaseName: mayastor
     namespace: mayastor
     valuesInline:
-      loki-stack.persistence.storageClassName: manual
-      etcd.persistence.storageClassName: manual
+      obs:
+        callhome:
+          enabled: false
+      loki-stack:
+        loki:
+          persistence:
+            storageClassName: manual
+      etcd:
+        persistence:
+          storageClass: manual
