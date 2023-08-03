@@ -8,4 +8,3 @@ resources:
   - cloudflared
   - external-dns
   - http-bin
-  - mayastor
