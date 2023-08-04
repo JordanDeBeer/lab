@@ -34,9 +34,7 @@ helmCharts:
         callhome:
           enabled: false
       loki-stack:
-        loki:
-          persistence:
-            storageClassName: manual
+        enabled: false
       etcd:
         persistence:
           storageClass: manual
