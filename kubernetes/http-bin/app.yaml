@@ -58,7 +58,7 @@ metadata:
   namespace: httpbin
 spec:
   parentRefs:
-    - name: tls-gateway
+    - name: gateway
       namespace: kube-system
   hostnames:
     - httpbin.jordande.beer
