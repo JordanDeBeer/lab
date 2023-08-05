@@ -6,6 +6,7 @@ resources:
   - ns.yaml
   - diskpool.yaml
   - storageclass.yaml
+  - https://github.com/kubernetes-csi/external-snapshotter//client/config/crd
 patches:
   - patch: |-
       - op: replace
