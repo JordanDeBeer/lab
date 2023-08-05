@@ -48,4 +48,3 @@ spec:
           requestRedirect:
             scheme: https
             statusCode: 301
-            port: 443
