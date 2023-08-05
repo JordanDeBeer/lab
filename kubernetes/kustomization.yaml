@@ -5,7 +5,7 @@ resources:
   - cert-manager
   - sops-secrets-operator
   - cilium
-  - cloudflared
+  #- cloudflared
   - external-dns
   - http-bin
   - mayastor
