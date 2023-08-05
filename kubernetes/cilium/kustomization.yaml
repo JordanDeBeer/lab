@@ -8,7 +8,7 @@ resources:
   - https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v0.7.0/config/crd/standard/gateway.networking.k8s.io_referencegrants.yaml
   - https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v0.7.0/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
   - l2.yaml
-  - gateway.yaml
+  #- gateway.yaml
 patches:
   - patch: |-
       - op: remove
@@ -32,7 +32,7 @@ helmCharts:
         enabled: false
 
       gatewayAPI:
-        enabled: true
+        enabled: false
 
       ingressController:
         enabled: true
