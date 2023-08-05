@@ -1,0 +1,48 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: knative-serving
+resources:
+  - https://github.com/knative/serving/releases/download/knative-v1.11.0/serving-core.yaml
+  # controller
+  - https://raw.githubusercontent.com/knative-extensions/net-gateway-api/main/config/200-clusterrole.yaml
+  - https://raw.githubusercontent.com/knative-extensions/net-gateway-api/main/config/controller.yaml
+  - gateway-config.yaml
+
+patches:
+  - patch: |-
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: config-domain
+        namespace: knative-serving
+      data:
+        jordande.beer: ""
+    target:
+      kind: ConfigMap
+      name: config-domain
+  - patch: |-
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: config-network
+        namespace: knative-serving
+      data:
+        ingress-class: "gateway-api.ingress.networking.knative.dev"
+    target:
+      kind: ConfigMap
+      name: config-network
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: net-gateway-api-controller
+        namespace: knative-serving
+      spec:
+        template:
+          spec:
+            containers:
+            - name: controller
+              image: gcr.io/knative-releases/knative.dev/net-gateway-api/cmd/controller:latest
+    target:
+      kind: Deployment
+      name: net-gateway-api-controller
