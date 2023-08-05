@@ -25,32 +25,6 @@ spec:
   selector:
     app: httpbin
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: httpbin-ingress
-  namespace: httpbin
-  annotations:
-    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-    external-dns.alpha.kubernetes.io/target: "jordande.beer"
-spec:
-  ingressClassName: cilium
-  rules:
-    - host: httpbin.jordande.beer
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: httpbin
-                port:
-                  number: 8000
-  tls:
-    - hosts:
-        - "*.jordande.beer"
-      secretName: wildcard-tls
----
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
@@ -60,6 +34,7 @@ spec:
   parentRefs:
     - name: gateway
       namespace: kube-system
+      port: 443
   hostnames:
     - httpbin.jordande.beer
   rules:
