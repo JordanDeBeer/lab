@@ -34,7 +34,7 @@ spec:
   parentRefs:
     - name: gateway
       namespace: kube-system
-      port: 443
+      sectionName: https
   hostnames:
     - httpbin.jordande.beer
   rules:

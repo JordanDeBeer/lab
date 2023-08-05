@@ -41,6 +41,7 @@ spec:
   parentRefs:
     - name: gateway
       namespace: kube-system
+      sectionName: http
   hostnames:
     - "*.jordande.beer"
   rules:
