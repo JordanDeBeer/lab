@@ -34,7 +34,6 @@ spec:
   parentRefs:
     - name: gateway
       namespace: kube-system
-      sectionName: https
   hostnames:
     - httpbin.jordande.beer
   rules:
@@ -68,3 +67,9 @@ spec:
           name: httpbin
           ports:
             - containerPort: 80
+      livenessProbe:
+      httpGet:
+        path: /status/200
+        port: 80
+      initialDelaySeconds: 3
+      periodSeconds: 3
