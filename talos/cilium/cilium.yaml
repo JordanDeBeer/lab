@@ -426,11 +426,12 @@ data:
   debug: "false"
   debug-verbose: ""
   disable-cnp-status-updates: "false"
+  egress-gateway-reconciliation-trigger-interval: 1s
   enable-auto-protect-node-port-range: "true"
   enable-bandwidth-manager: "true"
   enable-bbr: "true"
   enable-bgp-control-plane: "true"
-  enable-bpf-clock-probe: "true"
+  enable-bpf-clock-probe: "false"
   enable-bpf-masquerade: "true"
   enable-bpf-tproxy: "true"
   enable-endpoint-health-checking: "true"
@@ -462,11 +463,12 @@ data:
   install-no-conntrack-iptables-rules: "false"
   ipam: kubernetes
   ipam-cilium-node-update-rate: 15s
-  ipv4-native-routing-cidr: 10.244.0.0/16
+  k8s-client-burst: "10"
+  k8s-client-qps: "5"
   kube-proxy-replacement: strict
   kube-proxy-replacement-healthz-bind-address: 0.0.0.0:10256
   mesh-auth-enabled: "true"
-  mesh-auth-expired-gc-interval: 15m0s
+  mesh-auth-gc-interval: 5m0s
   mesh-auth-queue-size: "1024"
   mesh-auth-rotated-identities-queue-size: "1024"
   monitor-aggregation: medium
@@ -539,7 +541,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: 1296521f76462c4774ecb3c6e35c363a96fcc46e745bd30626920ecdbfcf023e
+        cilium.io/cilium-configmap-checksum: 45b08cdc60f61fcd31f971358c9c141f77b966e57534fc2e6d91b648d461d192
         meta.helm.sh/release-name: cilium
         meta.helm.sh/release-namespace: kube-system
       labels:
@@ -582,10 +584,10 @@ spec:
               name: cilium-config
               optional: true
         - name: KUBERNETES_SERVICE_HOST
-          value: 192.168.3.126
+          value: 10.0.0.5
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
-        image: quay.io/cilium/operator-generic:v1.14.0-rc.0
+        image: quay.io/cilium/operator-generic:v1.14.0@sha256:3014d4bcb8352f0ddef90fa3b5eb1bbf179b91024813a90a0066eb4517ba93c9
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -647,7 +649,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: 1296521f76462c4774ecb3c6e35c363a96fcc46e745bd30626920ecdbfcf023e
+        cilium.io/cilium-configmap-checksum: 45b08cdc60f61fcd31f971358c9c141f77b966e57534fc2e6d91b648d461d192
         container.apparmor.security.beta.kubernetes.io/cilium-agent: unconfined
         container.apparmor.security.beta.kubernetes.io/clean-cilium-state: unconfined
         meta.helm.sh/release-name: cilium
@@ -685,10 +687,10 @@ spec:
         - name: CILIUM_CLUSTERMESH_CONFIG
           value: /var/lib/cilium/clustermesh/
         - name: KUBERNETES_SERVICE_HOST
-          value: 192.168.3.126
+          value: 10.0.0.5
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
-        image: quay.io/cilium/cilium:v1.14.0-rc.0
+        image: quay.io/cilium/cilium:v1.14.0@sha256:5a94b561f4651fcfd85970a50bc78b201cfbd6e2ab1a03848eab25a82832653a
         imagePullPolicy: IfNotPresent
         lifecycle:
           preStop:
@@ -795,10 +797,10 @@ spec:
               apiVersion: v1
               fieldPath: metadata.namespace
         - name: KUBERNETES_SERVICE_HOST
-          value: 192.168.3.126
+          value: 10.0.0.5
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
-        image: quay.io/cilium/cilium:v1.14.0-rc.0
+        image: quay.io/cilium/cilium:v1.14.0@sha256:5a94b561f4651fcfd85970a50bc78b201cfbd6e2ab1a03848eab25a82832653a
         imagePullPolicy: IfNotPresent
         name: config
         terminationMessagePolicy: FallbackToLogsOnError
@@ -811,7 +813,7 @@ spec:
         - /bin/bash
         - -c
         - --
-        image: quay.io/cilium/cilium:v1.14.0-rc.0
+        image: quay.io/cilium/cilium:v1.14.0@sha256:5a94b561f4651fcfd85970a50bc78b201cfbd6e2ab1a03848eab25a82832653a
         imagePullPolicy: IfNotPresent
         name: mount-bpf-fs
         securityContext:
@@ -837,10 +839,10 @@ spec:
               name: cilium-config
               optional: true
         - name: KUBERNETES_SERVICE_HOST
-          value: 192.168.3.126
+          value: 10.0.0.5
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
-        image: quay.io/cilium/cilium:v1.14.0-rc.0
+        image: quay.io/cilium/cilium:v1.14.0@sha256:5a94b561f4651fcfd85970a50bc78b201cfbd6e2ab1a03848eab25a82832653a
         imagePullPolicy: IfNotPresent
         name: clean-cilium-state
         resources:
@@ -869,7 +871,7 @@ spec:
           name: cilium-run
       - command:
         - /install-plugin.sh
-        image: quay.io/cilium/cilium:v1.14.0-rc.0
+        image: quay.io/cilium/cilium:v1.14.0@sha256:5a94b561f4651fcfd85970a50bc78b201cfbd6e2ab1a03848eab25a82832653a
         imagePullPolicy: IfNotPresent
         name: install-cni-binaries
         resources:
