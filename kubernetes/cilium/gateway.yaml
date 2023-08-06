@@ -39,6 +39,8 @@ metadata:
   name: http-to-https-redirect
   namespace: kube-system
 spec:
+  hostnames:
+    - "*.jordande.beer"
   parentRefs:
     - name: gateway
       namespace: kube-system
