@@ -16,6 +16,7 @@ spec:
     - name: https
       protocol: HTTPS
       port: 443
+      hostname: "*.jordande.beer"
       tls:
         mode: Terminate
         certificateRefs:
