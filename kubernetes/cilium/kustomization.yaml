@@ -33,6 +33,9 @@ helmCharts:
       gatewayAPI:
         enabled: true
 
+      socketLB:
+        hostNamespaceOnly: true
+
       ingressController:
         enabled: false
         loadbalancerMode: shared
