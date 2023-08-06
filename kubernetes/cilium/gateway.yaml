@@ -12,6 +12,9 @@ metadata:
   namespace: kube-system
 spec:
   gatewayClassName: cilium
+  addresses:
+    - type: Hostname
+      value: "*.jordande.beer"
   listeners:
     - name: https
       protocol: HTTPS
