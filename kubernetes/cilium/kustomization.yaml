@@ -27,14 +27,13 @@ helmCharts:
         name: "cluster"
         id: "1"
 
-      routingMode: native
       autoDirectNodeRoutes: true
 
       bgpControlPlane:
         enabled: false
 
       gatewayAPI:
-        enabled: true
+        enabled: false
 
       socketLB:
         hostNamespaceOnly: true
