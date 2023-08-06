@@ -27,6 +27,7 @@ spec:
           from: All
     - name: http
       protocol: HTTP
+      hostname: "*.jordande.beer"
       port: 80
       allowedRoutes:
         namespaces:
