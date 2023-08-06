@@ -42,7 +42,6 @@ spec:
     - name: gateway
       namespace: kube-system
       sectionName: http
-      port: 80
   rules:
     - filters:
         - type: RequestRedirect
