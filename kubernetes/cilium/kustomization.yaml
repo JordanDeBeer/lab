@@ -34,7 +34,7 @@ helmCharts:
         enabled: true
 
       ingressController:
-        enabled: true
+        enabled: false
         loadbalancerMode: shared
         defaultSecretNamespace: kube-system
 
