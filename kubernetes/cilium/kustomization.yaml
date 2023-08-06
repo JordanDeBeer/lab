@@ -58,8 +58,8 @@ helmCharts:
 
       l2announcements:
         enabled: true
-        leaseDuration: "240s"
-        leaseRenewalDeadline: "120s"
+        leaseDuration: "120s"
+        leaseRenewalDeadline: "10s"
         leaseRetryPeriod: "5s"
         loadBalancer:
 
