@@ -27,6 +27,9 @@ helmCharts:
         name: "cluster"
         id: "1"
 
+      routingMode: native
+      autoDirectNodeRoutes: true
+
       bgpControlPlane:
         enabled: false
 
