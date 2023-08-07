@@ -38,7 +38,7 @@ helmCharts:
         loadbalancerMode: shared
         defaultSecretNamespace: kube-system
 
-      k8sServiceHost: 10.0.0.5
+      k8sServiceHost: 192.168.3.5
       k8sServicePort: 6443
 
       rollOutCiliumPods: true
@@ -83,7 +83,7 @@ helmCharts:
         rollOutPods: true
 
       tunnel: "disabled"
-      ipv4-native-routing-cidr: 10.0.0.0/20
+      ipv4NativeRoutingCIDR: 10.2.0.0/16
 
       containerRuntime:
         integration: containerd
@@ -119,7 +119,7 @@ helmCharts:
           enabled: true
           rollOutPods: true
           ingress:
-            enabled: true
+            enabled: false
             className: cilium
             hosts:
               - "hubble.jordande.beer"

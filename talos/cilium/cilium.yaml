@@ -463,7 +463,7 @@ data:
   install-no-conntrack-iptables-rules: "false"
   ipam: kubernetes
   ipam-cilium-node-update-rate: 15s
-  ipv4-native-routing-cidr: 10.0.0.0/20
+  ipv4-native-routing-cidr: 10.2.0.0/16
   k8s-client-burst: "10"
   k8s-client-qps: "5"
   kube-proxy-replacement: strict
@@ -542,7 +542,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: de7e5f3b2b1fcee0fa261a009ec8780621c666a4e6c4585d2715c79120799d11
+        cilium.io/cilium-configmap-checksum: 3a9b547d2bfd7a728a17d36b64493c52f2cbc361353854eab493fd467e920def
         meta.helm.sh/release-name: cilium
         meta.helm.sh/release-namespace: kube-system
       labels:
@@ -585,7 +585,7 @@ spec:
               name: cilium-config
               optional: true
         - name: KUBERNETES_SERVICE_HOST
-          value: 10.0.0.5
+          value: 192.168.3.5
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
         image: quay.io/cilium/operator-generic:v1.14.0@sha256:3014d4bcb8352f0ddef90fa3b5eb1bbf179b91024813a90a0066eb4517ba93c9
@@ -650,7 +650,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: de7e5f3b2b1fcee0fa261a009ec8780621c666a4e6c4585d2715c79120799d11
+        cilium.io/cilium-configmap-checksum: 3a9b547d2bfd7a728a17d36b64493c52f2cbc361353854eab493fd467e920def
         container.apparmor.security.beta.kubernetes.io/cilium-agent: unconfined
         container.apparmor.security.beta.kubernetes.io/clean-cilium-state: unconfined
         meta.helm.sh/release-name: cilium
@@ -688,7 +688,7 @@ spec:
         - name: CILIUM_CLUSTERMESH_CONFIG
           value: /var/lib/cilium/clustermesh/
         - name: KUBERNETES_SERVICE_HOST
-          value: 10.0.0.5
+          value: 192.168.3.5
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
         image: quay.io/cilium/cilium:v1.14.0@sha256:5a94b561f4651fcfd85970a50bc78b201cfbd6e2ab1a03848eab25a82832653a
@@ -798,7 +798,7 @@ spec:
               apiVersion: v1
               fieldPath: metadata.namespace
         - name: KUBERNETES_SERVICE_HOST
-          value: 10.0.0.5
+          value: 192.168.3.5
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
         image: quay.io/cilium/cilium:v1.14.0@sha256:5a94b561f4651fcfd85970a50bc78b201cfbd6e2ab1a03848eab25a82832653a
@@ -840,7 +840,7 @@ spec:
               name: cilium-config
               optional: true
         - name: KUBERNETES_SERVICE_HOST
-          value: 10.0.0.5
+          value: 192.168.3.5
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
         image: quay.io/cilium/cilium:v1.14.0@sha256:5a94b561f4651fcfd85970a50bc78b201cfbd6e2ab1a03848eab25a82832653a
