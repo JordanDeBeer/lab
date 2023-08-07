@@ -118,21 +118,22 @@ machine:
                 #     bootTimeout: 2m0s # Specifies the timeout when the node time is considered to be in sync unlocking the boot sequence.
                 # # Used to configure the machine's sysctls.
                 # # MachineSysctls usage example.
-                # sysctls:
-                #     kernel.domainname: talos.dev
-                #     net.ipv4.ip_forward: "0"
-                # # Used to configure the machine's sysfs.
-                # # MachineSysfs usage example.
-                # sysfs:
-                #     devices.system.cpu.cpu0.cpufreq.scaling_governor: performance
-                # # Configures the logging system.
-                # logging:
-                #     # Logging destination.
-                #     destinations:
-                #         - endpoint: tcp://1.2.3.4:12345 # Where to send logs. Supported protocols are "tcp" and "udp".
-                #           format: json_lines # Logs format.
-                # # Configures the node labels for the machine.
-                # # node labels example.
+    sysctls:
+        vm.nr_hugepages:
+            "1024"
+            #     net.ipv4.ip_forward: "0"
+            # # Used to configure the machine's sysfs.
+            # # MachineSysfs usage example.
+            # sysfs:
+            #     devices.system.cpu.cpu0.cpufreq.scaling_governor: performance
+            # # Configures the logging system.
+            # logging:
+            #     # Logging destination.
+            #     destinations:
+            #         - endpoint: tcp://1.2.3.4:12345 # Where to send logs. Supported protocols are "tcp" and "udp".
+            #           format: json_lines # Logs format.
+            # # Configures the node labels for the machine.
+            # # node labels example.
     nodeLabels:
         openebs.io/engine:
             mayastor
