@@ -133,8 +133,10 @@ machine:
                 #           format: json_lines # Logs format.
                 # # Configures the node labels for the machine.
                 # # node labels example.
-                # nodeLabels:
-                #     exampleLabel: exampleLabelValue
+    nodeLabels:
+        openebs.io/engine:
+            mayastor
+            #     exampleLabel: exampleLabelValue
 # Provides cluster specific configuration options.
 cluster:
     # Globally unique identifier for this cluster (base64 encoded random 32 bytes).
