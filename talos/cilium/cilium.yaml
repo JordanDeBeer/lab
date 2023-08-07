@@ -430,7 +430,7 @@ data:
   enable-auto-protect-node-port-range: "true"
   enable-bandwidth-manager: "true"
   enable-bbr: "true"
-  enable-bgp-control-plane: "true"
+  enable-bgp-control-plane: "false"
   enable-bpf-clock-probe: "false"
   enable-bpf-masquerade: "true"
   enable-bpf-tproxy: "true"
@@ -463,6 +463,7 @@ data:
   install-no-conntrack-iptables-rules: "false"
   ipam: kubernetes
   ipam-cilium-node-update-rate: 15s
+  ipv4-native-routing-cidr: 10.0.0.0/20
   k8s-client-burst: "10"
   k8s-client-qps: "5"
   kube-proxy-replacement: strict
@@ -541,7 +542,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: 45b08cdc60f61fcd31f971358c9c141f77b966e57534fc2e6d91b648d461d192
+        cilium.io/cilium-configmap-checksum: de7e5f3b2b1fcee0fa261a009ec8780621c666a4e6c4585d2715c79120799d11
         meta.helm.sh/release-name: cilium
         meta.helm.sh/release-namespace: kube-system
       labels:
@@ -649,7 +650,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: 45b08cdc60f61fcd31f971358c9c141f77b966e57534fc2e6d91b648d461d192
+        cilium.io/cilium-configmap-checksum: de7e5f3b2b1fcee0fa261a009ec8780621c666a4e6c4585d2715c79120799d11
         container.apparmor.security.beta.kubernetes.io/cilium-agent: unconfined
         container.apparmor.security.beta.kubernetes.io/clean-cilium-state: unconfined
         meta.helm.sh/release-name: cilium

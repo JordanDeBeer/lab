@@ -154,8 +154,7 @@ cluster:
         dnsDomain: cluster.local
         # The pod subnet CIDR.
         podSubnets:
-            - 10.0.4.0/22
-            - 10.0.8.0/22
+            - 10.0.8.0/21
         # The service subnet CIDR.
         serviceSubnets:
             - 10.0.12.0/22
@@ -255,10 +254,10 @@ cluster:
             #     - 10.0.0.0/8
     # A list of urls that point to additional manifests.
     extraManifests:
-        # cilium
-        - https://raw.githubusercontent.com/JordanDeBeer/lab/main/talos/cilium/cilium.yaml
         # config sync
         - https://github.com/GoogleContainerTools/kpt-config-sync/releases/download/v1.15.3/config-sync-manifest.yaml
+        # cilium
+        - https://raw.githubusercontent.com/JordanDeBeer/lab/main/talos/cilium/cilium.yaml
         # root sync
         - https://raw.githubusercontent.com/JordanDeBeer/lab/main/talos/config-sync/root-sync.yaml
     # A list of inline Kubernetes manifests.
