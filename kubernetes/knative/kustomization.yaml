@@ -1,14 +1,43 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: knative-serving
 resources:
+  - peerauth.yaml
   - https://github.com/knative/serving/releases/download/knative-v1.11.0/serving-core.yaml
-  # controller
-  - https://raw.githubusercontent.com/knative-extensions/net-gateway-api/main/config/200-clusterrole.yaml
-  - https://raw.githubusercontent.com/knative-extensions/net-gateway-api/main/config/controller.yaml
-  - gateway-config.yaml
-
+  - https://github.com/knative/net-istio/releases/download/knative-v1.11.0/net-istio.yaml
 patches:
+  - patch: |-
+      $patch: delete
+      apiVersion: networking.istio.io/v1beta1
+      kind: Gateway
+      metadata:
+        name: knative-ingress-gateway
+        namespace: knative-serving
+  - patch: |-
+      $patch: delete
+      apiVersion: networking.istio.io/v1beta1
+      kind: Gateway
+      metadata:
+        name: knative-local-gateway
+        namespace: knative-serving
+  - patch: |-
+      $patch: delete
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: knative-local-gateway
+        namespace: istio-system
+
+  - patch: |-
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: knative-serving
+        labels:
+          istio-injection: enabled
+          pod-security.kubernetes.io/enforce: privileged
+    target:
+      kind: Namespace
+      name: knative-serving
   - patch: |-
       apiVersion: v1
       kind: ConfigMap
@@ -24,25 +53,13 @@ patches:
       apiVersion: v1
       kind: ConfigMap
       metadata:
-        name: config-network
+        name: config-istio
         namespace: knative-serving
       data:
-        ingress-class: "gateway-api.ingress.networking.knative.dev"
+        # gateway.<gateway-namespace>.<gateway-name>: istio-ingressgateway.istio-system.svc.cluster.local
+        # gateway.knative-serving.knative-ingress-gateway: <ingress_name>.<ingress_namespace>.svc.cluster.local
+        gateway.istio-system.gateway: istio-ingressgateway.istio-ingress.svc.cluster.local
+        local-gateway.istio-system.local-gateway: istio-ingressgateway.istio-ingress.svc.cluster.local
     target:
       kind: ConfigMap
-      name: config-network
-  - patch: |-
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        name: net-gateway-api-controller
-        namespace: knative-serving
-      spec:
-        template:
-          spec:
-            containers:
-            - name: controller
-              image: gcr.io/knative-releases/knative.dev/net-gateway-api/cmd/controller:latest
-    target:
-      kind: Deployment
-      name: net-gateway-api-controller
+      name: config-istio

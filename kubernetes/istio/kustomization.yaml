@@ -1,0 +1,45 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ns.yaml
+  - istio-gateway.yaml
+patches:
+  - patch: |-
+      - op: replace
+        path: /apiVersion
+        value: policy/v1
+    target:
+      group: policy
+      version: v1beta1
+      kind: PodDisruptionBudget
+  - patch: |-
+      - op: replace
+        path: /apiVersion
+        value: autoscaling/v2
+    target:
+      group: autoscaling
+      version: v2beta2
+      kind: HorizontalPodAutoscaler
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/hostNetwork
+        value: true
+    target:
+      kind: Deployment
+      name: istiod
+
+helmCharts:
+  - name: base
+    repo: https://istio-release.storage.googleapis.com/charts
+    releaseName: istio-base
+    namespace: istio-system
+    includeCRDs: true
+  - name: istiod
+    repo: https://istio-release.storage.googleapis.com/charts
+    releaseName: istiod
+    namespace: istio-system
+  - name: gateway
+    repo: https://istio-release.storage.googleapis.com/charts
+    releaseName: istio-ingressgateway
+    namespace: istio-ingress
