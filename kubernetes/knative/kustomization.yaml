@@ -53,17 +53,6 @@ patches:
       apiVersion: v1
       kind: ConfigMap
       metadata:
-        name: config-network
-        namespace: knative-serving
-      data:
-
-    target:
-      kind: ConfigMap
-      name: config-network
-  - patch: |-
-      apiVersion: v1
-      kind: ConfigMap
-      metadata:
         name: config-domain
         namespace: knative-serving
       data:
