@@ -54,4 +54,4 @@ spec:
         - "*.jordande.beer"
       tls:
         mode: SIMPLE
-        credentialName: httpbin-credential # must be the same as secret
+        credentialName: wildcard-tls
