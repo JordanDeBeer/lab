@@ -7,13 +7,13 @@ patches:
   - patch: |-
       - op: add
         value: "ignore"
-        path: /metadata/annotations/client.lifeycyle.config.k8s.io~mutation
+        path: /metadata/annotations/client.lifeycyle.config.k8s.io~1mutation
     target:
       kind: "MutatingWebhookConfiguration"
   - patch: |-
       - op: add
         value: "ignore"
-        path: /metadata/annotations/client.lifeycyle.config.k8s.io~mutation
+        path: /metadata/annotations/client.lifeycyle.config.k8s.io~1mutation
     target:
       kind: "ValidatingWebhookConfiguration"
   - patch: |-
