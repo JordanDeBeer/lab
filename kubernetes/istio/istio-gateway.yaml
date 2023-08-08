@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: local-gateway
-  namespace: istio-ingress
+  namespace: istio-system
   labels:
     experimental.istio.io/disable-gateway-port-translation: "true"
 spec:
@@ -46,3 +46,12 @@ spec:
         protocol: HTTP
       hosts:
         - "*"
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      hosts:
+        - "*.jordande.beer"
+      tls:
+        mode: SIMPLE
+        credentialName: httpbin-credential # must be the same as secret

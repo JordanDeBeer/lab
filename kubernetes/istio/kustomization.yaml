@@ -47,4 +47,4 @@ helmCharts:
   - name: gateway
     repo: https://istio-release.storage.googleapis.com/charts
     releaseName: istio-ingressgateway
-    namespace: istio-ingress
+    namespace: istio-system
