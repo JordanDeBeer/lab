@@ -28,7 +28,12 @@ patches:
     target:
       kind: Deployment
       name: istiod
-
+  - patch: |-
+      - op: add
+        value: "ignore"
+        path: /metadata/annotations/client.lifeycyle.config.k8s.io~mutation
+    target:
+      kind: "ValidatingWebhookConfiguration"
 helmCharts:
   - name: base
     repo: https://istio-release.storage.googleapis.com/charts
