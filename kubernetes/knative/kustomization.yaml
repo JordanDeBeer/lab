@@ -64,6 +64,17 @@ patches:
       apiVersion: v1
       kind: ConfigMap
       metadata:
+        name: config-domain
+        namespace: knative-serving
+      data:
+        jordande.beer: ""
+    target:
+      kind: ConfigMap
+      name: config-domain
+  - patch: |-
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
         name: config-istio
         namespace: knative-serving
       data:
