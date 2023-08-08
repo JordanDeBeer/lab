@@ -53,13 +53,13 @@ patches:
       apiVersion: v1
       kind: ConfigMap
       metadata:
-        name: config-domain
+        name: config-network
         namespace: knative-serving
       data:
         domain-template: "{{.Name}}-{{.Namespace}}.{{.Domain}}"
     target:
       kind: ConfigMap
-      name: config-domain
+      name: config-network
   - patch: |-
       apiVersion: v1
       kind: ConfigMap
