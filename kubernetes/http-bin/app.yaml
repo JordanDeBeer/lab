@@ -2,12 +2,10 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: httpbin
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: httpbin
-  namespace: httpbin
+  labels:
+    istio-injection: enabled
+    pod-security.kubernetes.io/enforce: privileged
+
 ---
 apiVersion: v1
 kind: Service
@@ -38,8 +36,6 @@ spec:
       version: v1
   template:
     metadata:
-      annotations:
-        policy.cilium.io/proxy-visibility: "<Egress/80/TCP/HTTP>,<Ingress/80/TCP/HTTP>"
       labels:
         app: httpbin
         version: v1
@@ -58,20 +54,24 @@ spec:
             initialDelaySeconds: 3
             periodSeconds: 10
 ---
-apiVersion: gateway.networking.k8s.io/v1beta1
-kind: HTTPRoute
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
 metadata:
-  name: httpbin
+  name: httpbin-route
   namespace: httpbin
 spec:
-  parentRefs:
-    - name: gateway
-      namespace: kube-system
-  hostnames:
+  hosts:
     - httpbin.jordande.beer
-  rules:
-    - backendRefs:
-        - name: httpbin
-          port: 8000
----
-
+  gateways:
+    - istio-system/gateway
+  http:
+    - match:
+        - authority:
+            prefix: httpbin.jordande.beer
+          gateways:
+            - istio-system/gateway
+      route:
+        - destination:
+            host: httpbin.httpbin.svc.cluster.local
+            port:
+              number: 8000
