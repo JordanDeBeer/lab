@@ -1,0 +1,75 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: controller
+    prometheus.jordande.beer/monitoring: "true"
+  name: controller
+  namespace: knative-serving
+spec:
+  endpoints:
+    - interval: 30s
+      port: http-metrics
+  namespaceSelector:
+    matchNames:
+      - knative-serving
+  selector:
+    matchLabels:
+      app: controller
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: autoscaler
+    prometheus.jordande.beer/monitoring: "true"
+  name: autoscaler
+  namespace: knative-serving
+spec:
+  endpoints:
+    - interval: 30s
+      port: http-metrics
+  namespaceSelector:
+    matchNames:
+      - knative-serving
+  selector:
+    matchLabels:
+      app: autoscaler
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: activator
+    prometheus.jordande.beer/monitoring: "true"
+  name: activator
+  namespace: knative-serving
+spec:
+  endpoints:
+    - interval: 30s
+      port: http-metrics
+  namespaceSelector:
+    matchNames:
+      - knative-serving
+  selector:
+    matchLabels:
+      app: activator
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: webhook
+    prometheus.jordande.beer/monitoring: "true"
+  name: webhook
+  namespace: knative-serving
+spec:
+  endpoints:
+    - interval: 30s
+      port: http-metrics
+  namespaceSelector:
+    matchNames:
+      - knative-serving
+  selector:
+    matchLabels:
+      role: webhook
