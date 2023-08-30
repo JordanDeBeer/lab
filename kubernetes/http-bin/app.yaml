@@ -5,7 +5,11 @@ metadata:
   labels:
     istio-injection: enabled
     pod-security.kubernetes.io/enforce: privileged
-
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: httpbin
 ---
 apiVersion: v1
 kind: Service
