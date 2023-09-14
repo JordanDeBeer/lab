@@ -16,6 +16,22 @@ patches:
       kind: CustomResourceDefinition
       name: volumesnapshotclasses.snapshot.storage.k8s.io
   - patch: |-
+      - op: remove
+        path: /status
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: volumesnapshots.snapshot.storage.k8s.io
+  - patch: |-
+      - op: remove
+        path: /status
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: volumesnapshotcontents.snapshot.storage.k8s.io
+  - patch: |-
       - op: replace
         path: /apiVersion
         value: policy/v1
