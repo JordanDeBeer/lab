@@ -1,4 +1,4 @@
-apiVersion: "openebs.io/v1alpha1"
+apiVersion: "openebs.io/v1beta1"
 kind: DiskPool
 metadata:
   name: pool-host1
@@ -7,7 +7,7 @@ spec:
   node: host1
   disks: ["/dev/nvme1n1"]
 ---
-apiVersion: "openebs.io/v1alpha1"
+apiVersion: "openebs.io/v1beta1"
 kind: DiskPool
 metadata:
   name: pool-host2
@@ -16,7 +16,7 @@ spec:
   node: host2
   disks: ["/dev/nvme1n1"]
 ---
-apiVersion: "openebs.io/v1alpha1"
+apiVersion: "openebs.io/v1beta1"
 kind: DiskPool
 metadata:
   name: pool-host3
