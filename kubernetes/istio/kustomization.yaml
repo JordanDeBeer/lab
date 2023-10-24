@@ -44,6 +44,26 @@ helmCharts:
     repo: https://istio-release.storage.googleapis.com/charts
     releaseName: istiod
     namespace: istio-system
+    valuesInline:
+      meshConfig:
+        extensionProviders:
+          - name: oauth2-proxy
+            envoyExtAuthzHttp:
+              service: oauth2-proxy.istio-system.svc.cluster.local
+              port: 80
+              headersToUpstreamOnAllow:
+                - path
+                - x-auth-request-email
+                - x-auth-request-preferred-username
+              headersToDownstreamOnDeny:
+                - content-type
+                - set-cookie
+              includeRequestHeadersInCheck:
+                - authorization
+                - cookie
+                - x-auth-request-groups
+              includeAdditionalHeadersInCheck: # Optional for oauth2-proxy to enforce https
+                X-Auth-Request-Redirect: "https://%REQ(:authority)%%REQ(:path)%"
   - name: gateway
     repo: https://istio-release.storage.googleapis.com/charts
     releaseName: istio-ingressgateway
