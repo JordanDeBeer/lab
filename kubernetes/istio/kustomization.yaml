@@ -63,7 +63,7 @@ helmCharts:
                 - cookie
                 - x-auth-request-groups
               includeAdditionalHeadersInCheck: # Optional for oauth2-proxy to enforce https
-                X-Auth-Request-Redirect: "https://%REQ(:authority)%%REQ(:path)%?rd=%REQ(:authority)%%REQ(:path)"
+                X-Auth-Request-Redirect: "https://%REQ(:authority)%%REQ(:path)%?rd=%REQ(:authority)%%REQ(:path)%"
   - name: gateway
     repo: https://istio-release.storage.googleapis.com/charts
     releaseName: istio-ingressgateway
