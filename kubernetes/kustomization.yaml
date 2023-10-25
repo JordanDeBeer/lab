@@ -11,3 +11,4 @@ resources:
   - mayastor
   - istio
   - knative
+  - postgres
