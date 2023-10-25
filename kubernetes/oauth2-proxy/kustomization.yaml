@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: istio-system
+resources:
+  - "secrets.yaml"
+  - "auth.yaml"
+helmCharts:
+  - name: oauth2-proxy
+    repo: https://oauth2-proxy.github.io/manifests
+    releaseName: oauth2-proxy
+    valuesInline:
+      config:
+        existingSecret: client-secret
+        google:
+          existingSecret: google-secret
+      extraArgs:
+        provider: oidc
+        cookie-secure: false
+        cookie-domain: ".jordande.beer"
+        redirect-url: https://httpbin.jordande.beer/oauth2/callback # this can be any service that doesn't 404 in Istio. Just need to update Google OIDC too.
+        cookie-samesite: lax
+        cookie-refresh: 1h
+        cookie-expire: 4h
+        set-xauthrequest: true
+        reverse-proxy: true
+        pass-access-token: true # X-Auth-Request-Access-Token, must first enable --set-xauthrequest
+        set-authorization-header: true # Authorization: Bearer <JWT>
+        pass-authorization-header: true # pass OIDC IDToken to upstream via Authorization Bearer header
+        pass-user-headers: true
+        pass-host-header: true # pass the request Host Header to upstream
+        scope: "openid email"
+        upstream: static://200
+        skip-provider-button: true
+        whitelist-domain: .jordande.beer
+        oidc-issuer-url: https://accounts.google.com
+        standard-logging: true
+        auth-logging: true
+        request-logging: true
