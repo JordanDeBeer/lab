@@ -64,6 +64,8 @@ kind: VirtualService
 metadata:
   name: httpbin-route
   namespace: httpbin
+  labels:
+    app: httpbin
 spec:
   hosts:
     - httpbin.jordande.beer
