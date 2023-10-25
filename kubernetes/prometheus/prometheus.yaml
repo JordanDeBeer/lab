@@ -49,11 +49,13 @@ metadata:
   name: prometheus
   namespace: monitoring
 spec:
+  podMetadata:
+    labels:
+      jordande.beer/auth: "true"
   securityContext:
     fsGroup: 2000
     runAsNonRoot: true
     runAsUser: 1000
-
   storage:
     volumeClaimTemplate:
       spec:
@@ -94,8 +96,10 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: httpbin-route
-  namespace: httpbin
+  name: prometheus-route
+  namespace: monitoring
+  labels:
+    jordande.beer/auth: "true"
 spec:
   hosts:
     - prometheus.jordande.beer
