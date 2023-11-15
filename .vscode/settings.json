@@ -1,8 +1,0 @@
-{
-  "vs-kubernetes": {
-    "disable-linters": ["resource-limits"]
-  },
-  "yaml.schemas": {
-    "kubernetes://schema/v1@namespace+v1@serviceaccount+v1@service+networking.k8s.io/v1@ingress+apps/v1@deployment": "file:///home/jordan/Code/lab/kubernetes/http-bin/app.yaml"
-  }
-}
