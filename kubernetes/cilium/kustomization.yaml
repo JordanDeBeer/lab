@@ -21,7 +21,7 @@ patches:
 helmCharts:
   - name: cilium
     repo: https://helm.cilium.io/
-    version: 1.14.3
+    version: 1.14.4
     releaseName: cilium
     namespace: kube-system
     valuesInline:
@@ -76,7 +76,7 @@ helmCharts:
       l7Proxy: true
 
       cni:
-        exclusive: false
+        exclusive: true
 
       enableCnpStatusUpdates: true
       endpointStatus:
