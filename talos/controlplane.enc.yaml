@@ -23,8 +23,6 @@ machine:
         - host3
     # Used to provide additional options to the kubelet.
     kubelet:
-        # The `image` field is an optional reference to an alternative kubelet image.
-        image: ghcr.io/siderolabs/kubelet:v1.27.3
         # Enable container runtime default Seccomp profile.
         defaultRuntimeSeccompProfileEnabled: true
         # The `disableManifestsDirectory` field configures the kubelet to get static pod manifests from the /etc/kubernetes/manifests directory.
@@ -50,7 +48,7 @@ machine:
         # The disk used for installations.
         disk: /dev/nvme0n1
         # Allows for supplying the image used to perform the installation.
-        image: ghcr.io/siderolabs/installer:v1.4.6
+        image: ghcr.io/siderolabs/installer:v1.6.1
         # Indicates if a bootloader should be installed.
         bootloader: true
         # Indicates if the installation disk should be wiped at installation time.
@@ -120,7 +118,7 @@ machine:
                 # # MachineSysctls usage example.
     sysctls:
         vm.nr_hugepages:
-            "1024"
+            "2048"
             #     net.ipv4.ip_forward: "0"
             # # Used to configure the machine's sysfs.
             # # MachineSysfs usage example.
@@ -183,7 +181,7 @@ cluster:
     # API server specific configuration options.
     apiServer:
         # The container image used in the API server manifest.
-        image: registry.k8s.io/kube-apiserver:v1.27.3
+        image: registry.k8s.io/kube-apiserver:v1.29.0
         # Extra certificate subject alternative names for the API server's certificate.
         certSANs:
             - 192.168.3.5
@@ -219,17 +217,17 @@ cluster:
     # Controller manager server specific configuration options.
     controllerManager:
         # The container image used in the controller manager manifest.
-        image: registry.k8s.io/kube-controller-manager:v1.27.3
+        image: registry.k8s.io/kube-controller-manager:v1.29.0
     # Kube-proxy server-specific configuration options
     proxy:
         # The container image used in the kube-proxy manifest.
-        image: registry.k8s.io/kube-proxy:v1.27.3
+        image: registry.k8s.io/kube-proxy:v1.29.0
         # # Disable kube-proxy deployment on cluster bootstrap.
         disabled: true
     # Scheduler server specific configuration options.
     scheduler:
         # The container image used in the scheduler manifest.
-        image: registry.k8s.io/kube-scheduler:v1.27.3
+        image: registry.k8s.io/kube-scheduler:v1.29.0
     # Configures cluster member discovery.
     discovery:
         # Enable the cluster membership discovery feature.
@@ -258,7 +256,7 @@ cluster:
     # A list of urls that point to additional manifests.
     extraManifests:
         # config sync
-        - https://github.com/GoogleContainerTools/kpt-config-sync/releases/download/v1.15.3/config-sync-manifest.yaml
+        - https://github.com/GoogleContainerTools/kpt-config-sync/releases/download/v1.16.2/config-sync-manifest.yaml
         # cilium
         - https://raw.githubusercontent.com/JordanDeBeer/lab/main/talos/cilium/cilium.yaml
         # root sync
