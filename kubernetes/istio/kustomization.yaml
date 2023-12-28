@@ -44,6 +44,7 @@ helmCharts:
     repo: https://istio-release.storage.googleapis.com/charts
     releaseName: istiod
     namespace: istio-system
+    version: 1.20.1
     valuesInline:
       meshConfig:
         extensionProviders:
