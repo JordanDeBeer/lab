@@ -8,7 +8,8 @@ resources:
   #- cloudflared
   #- external-dns
   - http-bin
-  - mayastor
+  #- mayastor
+  #- monitoring
   - istio
   - knative
-  - postgres
+  #- postgres
