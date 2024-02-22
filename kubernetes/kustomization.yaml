@@ -14,3 +14,11 @@ resources:
   - knative
   #- postgres
   - longhorn
+patches:
+  - patch: |-
+      - op: remove
+        path: /status
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
