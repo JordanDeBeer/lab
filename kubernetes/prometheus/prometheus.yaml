@@ -59,7 +59,6 @@ spec:
   storage:
     volumeClaimTemplate:
       spec:
-        storageClassName: mayastor-single-replica
         resources:
           requests:
             storage: 40Gi
