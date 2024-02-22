@@ -13,3 +13,4 @@ resources:
   - istio
   - knative
   #- postgres
+  - longhorn
