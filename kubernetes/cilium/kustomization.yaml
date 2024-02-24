@@ -28,7 +28,7 @@ helmCharts:
         enabled: false
 
       gatewayAPI:
-        enabled: true
+        enabled: false
 
       socketLB:
         hostNamespaceOnly: true
