@@ -81,6 +81,16 @@ rules:
   - list
   - watch
 - apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - create
+  - get
+  - update
+  - list
+  - delete
+- apiGroups:
   - apiextensions.k8s.io
   resources:
   - customresourcedefinitions
@@ -413,6 +423,7 @@ data:
   bpf-lb-map-max: "65536"
   bpf-lb-mode: dsr
   bpf-lb-sock: "false"
+  bpf-lb-sock-hostns-only: "true"
   bpf-map-dynamic-size-ratio: "0.0025"
   bpf-policy-map-max: "16384"
   bpf-root: /sys/fs/bpf
@@ -420,7 +431,7 @@ data:
   cilium-endpoint-gc-interval: 5m0s
   cluster-id: "1"
   cluster-name: cluster
-  cni-exclusive: "false"
+  cni-exclusive: "true"
   cni-log-file: /var/run/cilium/cilium-cni.log
   custom-cni-conf: "false"
   debug: "false"
@@ -445,6 +456,7 @@ data:
   enable-ipv6-masquerade: "true"
   enable-k8s-networkpolicy: "true"
   enable-k8s-terminating-endpoint: "true"
+  enable-l2-announcements: "true"
   enable-l2-neigh-discovery: "true"
   enable-l7-proxy: "true"
   enable-local-redirect-policy: "true"
@@ -468,6 +480,8 @@ data:
   k8s-client-qps: "5"
   kube-proxy-replacement: strict
   kube-proxy-replacement-healthz-bind-address: 0.0.0.0:10256
+  l2-announcements-lease-duration: 120s
+  l2-announcements-retry-period: 5s
   mesh-auth-enabled: "true"
   mesh-auth-gc-interval: 5m0s
   mesh-auth-queue-size: "1024"
@@ -542,7 +556,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: 3a9b547d2bfd7a728a17d36b64493c52f2cbc361353854eab493fd467e920def
+        cilium.io/cilium-configmap-checksum: 574e7f04f5d5afd1c749bc740d7a36d6e9d8e028b90084fc23440b6a0696ad46
         meta.helm.sh/release-name: cilium
         meta.helm.sh/release-namespace: kube-system
       labels:
@@ -650,7 +664,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: 3a9b547d2bfd7a728a17d36b64493c52f2cbc361353854eab493fd467e920def
+        cilium.io/cilium-configmap-checksum: 574e7f04f5d5afd1c749bc740d7a36d6e9d8e028b90084fc23440b6a0696ad46
         container.apparmor.security.beta.kubernetes.io/cilium-agent: unconfined
         container.apparmor.security.beta.kubernetes.io/clean-cilium-state: unconfined
         meta.helm.sh/release-name: cilium
