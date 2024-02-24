@@ -9,7 +9,8 @@ helmCharts:
     releaseName: longhorn
     namespace: longhorn-system
     valuesInline:
-      defaultDataPath: /var/mnt/nvme
+      defaultSettings:
+        defaultDataPath: /var/mnt/nvme
 patches:
   - patch: |-
       - op: remove
