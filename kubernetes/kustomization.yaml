@@ -11,6 +11,6 @@ resources:
   #- mayastor
   - istio
   - knative
-  #- postgres
+  - postgres
   - longhorn
   - prometheus
