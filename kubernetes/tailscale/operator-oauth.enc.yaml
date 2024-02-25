@@ -1,0 +1,31 @@
+apiVersion: isindir.github.com/v1alpha3
+kind: SopsSecret
+metadata:
+    name: operator-oauth
+    namespace: kube-system
+spec:
+    secretTemplates:
+        - name: operator-oauth
+          stringData:
+            client_id: ENC[AES256_GCM,data:uQoYEH0DEvM7yv6z,iv:CvRfyv8Kf+I3buNiq78YPDr08bPBAcv+OD1Mkzm+Utk=,tag:Iy11j4xN+jz2FEOnegw3AQ==,type:str]
+            client_secret: ENC[AES256_GCM,data:nhMMEcqAVwmi6xDDtvlZ4ZeN+TLbv4CIevshithSVPBnBGFgA1UCTTP8QURV5mwNXoWBopjIyeqBhwM=,iv:LuSUh+F3OGE6ZggGPs/LjiD0V2+6ltGTinE4/nuTS3w=,tag:GNe+gQ2V2OwV8iu1oGX86A==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1nfmgqg5wzxnztmhdqt4g9k9l3qk7hsj86qf3u0xy685nwh489duqedf07m
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBkUW4yWTZmWmtFb1FXMnNp
+            VVVWQlpkVGVxNkNnVk15VXlzbFZZZTlSMVVzCmViVUwwYktYMzZFQ0hFVkdLdXhw
+            Sy8vRDh3UWQ0SVhwRGYxN0VFUTJ1MlUKLS0tIDFMeHlvL1FVWXBKZ3hRb2p5VlNW
+            RUFIL0UzQ0V4RWlZemlJN1RmMmtyZFkKNCwXm5h50KsRV2rV9y2nO8fubg4IPkQ/
+            w/jnlljFxbmmLnR0yYvaF7Z0lgFIVrK6x1ieZVn/kPmxgai/KfV8EQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-02-25T01:44:15Z"
+    mac: ENC[AES256_GCM,data:a+ezBTN1WEX4O+9Ny/KY0bupa5lG6ATjaIIvgAMrkqdFUI4yVM5p+beTP/21Wqz1xphVzdgArOvoRF7GuVJ3KjW7B62j9AT2HpJfjN0X9H4SGEK11xLcKnFujZZaCBFUWgeNvfDYggQX0AeY3vU1bVBdU/m509qC3RffoM0XET0=,iv:a4g+QxzltMr+BnvBkl8iti9vpsG0QTa5HotP6wZOgTU=,tag:hRNxXfoZ4e4HX0k+0diPhg==,type:str]
+    pgp: []
+    encrypted_regex: ^stringData
+    version: 3.7.3
