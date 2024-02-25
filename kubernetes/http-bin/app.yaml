@@ -20,10 +20,12 @@ metadata:
   labels:
     app: httpbin
     service: httpbin
+  annotations:
+    tailscale.com/expose: "true"
 spec:
   ports:
     - name: http
-      port: 8000
+      port: 80
       targetPort: 80
   selector:
     app: httpbin
@@ -80,5 +82,3 @@ spec:
       route:
         - destination:
             host: httpbin.httpbin.svc.cluster.local
-            port:
-              number: 8000
