@@ -29,7 +29,7 @@ machine:
         disableManifestsDirectory: true
         # # The `extraMounts` field is used to add additional mounts to the kubelet container.
         extraMounts:
-            - destination: /var/mnt/nvme
+            - destination: /var/lib/longhorn
               type: bind
               source: /var/mnt/nvme
               options:
@@ -48,7 +48,8 @@ machine:
         # The disk used for installations.
         disk: /dev/nvme0n1
         # Allows for supplying the image used to perform the installation.
-        image: ghcr.io/siderolabs/installer:v1.6.1
+        #image: ghcr.io/siderolabs/installer:v1.6.1
+        image: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245:v1.6.5
         # Indicates if a bootloader should be installed.
         bootloader: true
         # Indicates if the installation disk should be wiped at installation time.
@@ -133,9 +134,7 @@ machine:
             # # Configures the node labels for the machine.
             # # node labels example.
     nodeLabels:
-        openebs.io/engine:
-            mayastor
-            #     exampleLabel: exampleLabelValue
+        #     exampleLabel: exampleLabelValue
 # Provides cluster specific configuration options.
 cluster:
     # Globally unique identifier for this cluster (base64 encoded random 32 bytes).

@@ -1,0 +1,9 @@
+machine:
+  network:
+    hostname: host1
+    interfaces:
+      - interface: eth0
+        addresses:
+          - 192.168.3.2
+        vip:
+          ip: 192.168.3.5

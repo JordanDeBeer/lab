@@ -9,8 +9,8 @@ resources:
   #- external-dns
   - http-bin
   #- mayastor
-  - istio
-  - knative
+  #- istio
+  #- knative
   - postgres
   - longhorn
   - prometheus

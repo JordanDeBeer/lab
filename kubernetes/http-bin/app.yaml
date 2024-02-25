@@ -20,8 +20,6 @@ metadata:
   labels:
     app: httpbin
     service: httpbin
-  annotations:
-    tailscale.com/expose: "true"
 spec:
   ports:
     - name: http
@@ -61,24 +59,18 @@ spec:
             initialDelaySeconds: 3
             periodSeconds: 10
 ---
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: httpbin-route
+  name: httpbin
   namespace: httpbin
-  labels:
-    app: httpbin
 spec:
-  hosts:
-    - httpbin.jordande.beer
-  gateways:
-    - istio-system/gateway
-  http:
-    - match:
-        - authority:
-            prefix: httpbin.jordande.beer
-          gateways:
-            - istio-system/gateway
-      route:
-        - destination:
-            host: httpbin.httpbin.svc.cluster.local
+  defaultBackend:
+    service:
+      name: httpbin
+      port:
+        number: 80
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - httpbin

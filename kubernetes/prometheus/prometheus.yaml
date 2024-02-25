@@ -91,26 +91,18 @@ spec:
   selector:
     prometheus: prometheus
 ---
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: prometheus-route
+  name: prometheus
   namespace: monitoring
-  labels:
-    jordande.beer/auth: "true"
 spec:
-  hosts:
-    - prometheus.jordande.beer
-  gateways:
-    - istio-system/gateway
-  http:
-    - match:
-        - authority:
-            prefix: prometheus.jordande.beer
-          gateways:
-            - istio-system/gateway
-      route:
-        - destination:
-            host: prometheus.monitoring.svc.cluster.local
-            port:
-              number: 9090
+  defaultBackend:
+    service:
+      name: prometheus
+      port:
+        number: 9090
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - monitoring
