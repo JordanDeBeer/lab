@@ -255,7 +255,7 @@ cluster:
     # A list of urls that point to additional manifests.
     extraManifests:
         # config sync
-        - https://github.com/GoogleContainerTools/kpt-config-sync/releases/download/v1.16.2/config-sync-manifest.yaml
+        - https://github.com/GoogleContainerTools/kpt-config-sync/releases/download/v1.17.2/config-sync-manifest.yaml
         # cilium
         - https://raw.githubusercontent.com/JordanDeBeer/lab/main/talos/cilium/cilium.yaml
         # root sync
