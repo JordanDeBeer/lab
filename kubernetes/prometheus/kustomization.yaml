@@ -2,6 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: monitoring
 resources:
-  - ns.yaml
-  - https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.67.1/bundle.yaml
-  - prometheus.yaml
+  #- ns.yaml
+  #- https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.67.1/bundle.yaml
+  #- prometheus.yaml
+  #- https://raw.githubusercontent.com/prometheus-operator/kube-prometheus/main/
+  - https://github.com/prometheus-operator/kube-prometheus?ref=release-0.13
