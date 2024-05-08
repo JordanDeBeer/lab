@@ -33,3 +33,11 @@ patches:
       version: v1
       kind: DaemonSet
       name: node-exporter
+  - patch: |-
+      - op: replace
+        path: /metadata/namespace
+        value: kube-system
+    target:
+      version: v1
+      kind: ServiceAccount
+      name: node-exporter
