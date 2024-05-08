@@ -25,19 +25,11 @@ patches:
         name: alertmanager-main
         namespace: monitoring
   - patch: |-
-      - op: replace
-        path: /metadata/namespace
-        value: kube-system
-    target:
-      group: apps
-      version: v1
-      kind: DaemonSet
-      name: node-exporter
-  - patch: |-
-      - op: replace
-        path: /metadata/namespace
-        value: kube-system
+      - op: add
+        path: /metadata/labels       
+        value:
+          pod-security.kubernetes.io/enforce: privileged
     target:
       version: v1
-      kind: ServiceAccount
-      name: node-exporter
+      kind: Namespace
+      name: monitoring
