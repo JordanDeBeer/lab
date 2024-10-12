@@ -153,5 +153,6 @@ helmCharts:
 commonAnnotations:
   meta.helm.sh/release-name: cilium
   meta.helm.sh/release-namespace: kube-system
-commonLabels:
-  app.kubernetes.io/managed-by: Helm
+labels:
+  - pairs:
+      app.kubernetes.io/managed-by: Helm
