@@ -154,5 +154,6 @@ commonAnnotations:
 labels:
   - pairs:
       app.kubernetes.io/managed-by: Helm
-    includeSelectors: true 
+    includeSelectors: true
+    includeTemplates: true
 
