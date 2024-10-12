@@ -86,7 +86,7 @@ helmCharts:
       operator:
         rollOutPods: true
 
-      tunnel: disabled
+      routingMode: "native"
       ipv4NativeRoutingCIDR: 10.2.0.0/16
 
       hubble:
