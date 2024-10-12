@@ -89,9 +89,6 @@ helmCharts:
       tunnel: disabled
       ipv4NativeRoutingCIDR: 10.2.0.0/16
 
-      containerRuntime:
-        integration: containerd
-
       hubble:
         enabled: true
         tls:
