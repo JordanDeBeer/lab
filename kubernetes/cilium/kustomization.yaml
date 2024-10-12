@@ -28,7 +28,7 @@ helmCharts:
     valuesInline:
       cluster:
         name: "cluster"
-        id: "1"
+        id: 1
 
       autoDirectNodeRoutes: true
 
