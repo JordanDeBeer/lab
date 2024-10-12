@@ -52,8 +52,7 @@ helmCharts:
       rollOutCiliumPods: true
       localRedirectPolicy: true
 
-      kubeProxyReplacement: "strict"
-      kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
+      kubeProxyReplacement: true
 
       loadBalancer:
         algorithm: "maglev"
@@ -90,8 +89,7 @@ helmCharts:
       operator:
         rollOutPods: true
 
-      tunnel: "disabled"
-      routingMode: "native"
+      tunnel: disabled
       ipv4NativeRoutingCIDR: 10.2.0.0/16
 
       containerRuntime:
