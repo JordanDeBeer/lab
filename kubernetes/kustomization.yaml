@@ -12,5 +12,5 @@ resources:
 - http-bin
 - postgres
 - longhorn
-- prometheus
+#- prometheus
 - tailscale
