@@ -78,8 +78,6 @@ helmCharts:
       cni:
         exclusive: true
 
-      enableCnpStatusUpdates: true
-
       ipam:
         mode: "kubernetes"
 
