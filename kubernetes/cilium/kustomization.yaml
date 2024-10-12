@@ -79,9 +79,6 @@ helmCharts:
         exclusive: true
 
       enableCnpStatusUpdates: true
-      endpointStatus:
-        enabled: true
-        status: "policy"
 
       ipam:
         mode: "kubernetes"
