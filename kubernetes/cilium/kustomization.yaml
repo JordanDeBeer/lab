@@ -8,6 +8,7 @@ resources:
   - https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_httproutes.yaml
   - https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_referencegrants.yaml
   - gateway.yaml
+  - bgp.yaml
 
 patches:
   - patch: |-
@@ -31,7 +32,7 @@ helmCharts:
       autoDirectNodeRoutes: true
 
       bgpControlPlane:
-        enabled: false
+        enabled: true
 
       gatewayAPI:
         enabled: true
