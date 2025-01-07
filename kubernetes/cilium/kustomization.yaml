@@ -37,6 +37,8 @@ helmCharts:
         enabled: true
 
       gatewayAPI:
+        gatewayClass:
+          create: "true"
         enabled: true
 
       socketLB:

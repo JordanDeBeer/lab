@@ -43,3 +43,6 @@ spec:
       service:
         addresses:
           - LoadBalancerIP
+      selector: # <-- select all services
+        matchExpressions:
+          - { key: somekey, operator: NotIn, values: ["never-used-value"] }
