@@ -71,6 +71,7 @@ helmCharts:
       bpf:
         masquerade: true
         tproxy: true
+        datapathMode: "netkit"
 
       l7Proxy: true
 
