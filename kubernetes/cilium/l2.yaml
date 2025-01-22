@@ -4,5 +4,6 @@ kind: CiliumLoadBalancerIPPool
 metadata:
   name: homelab
 spec:
+  allowFirstLastIPs: "No"
   blocks:
     - cidr: "10.3.0.0/16"
