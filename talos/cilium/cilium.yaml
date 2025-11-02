@@ -15359,7 +15359,6 @@ data:
   nodes-gc-interval: 5m0s
   operator-api-serve-addr: 127.0.0.1:9234
   operator-prometheus-serve-addr: :9963
-  policy-cidr-match-mode: ""
   policy-default-local-cluster: "false"
   policy-secrets-namespace: cilium-secrets
   policy-secrets-only-from-secrets-namespace: "true"
@@ -15633,7 +15632,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: f8fa116a842771c5a5fa9c3709471e9aee89918b74dd04bdc7eda1801c846075
+        cilium.io/cilium-configmap-checksum: 6324695c59e520557f2d0c223079f3f05a5250eba2c67e2569cd9ba76e9168b0
         meta.helm.sh/release-name: cilium
         meta.helm.sh/release-namespace: kube-system
         prometheus.io/port: "9963"
@@ -15678,9 +15677,9 @@ spec:
               name: cilium-config
               optional: true
         - name: KUBERNETES_SERVICE_HOST
-          value: 192.168.3.5
+          value: localhost
         - name: KUBERNETES_SERVICE_PORT
-          value: "6443"
+          value: "7445"
         image: quay.io/cilium/operator-generic:v1.18.3@sha256:b5a0138e1a38e4437c5215257ff4e35373619501f4877dbaf92c89ecfad81797
         imagePullPolicy: IfNotPresent
         livenessProbe:
@@ -16062,7 +16061,7 @@ spec:
   template:
     metadata:
       annotations:
-        cilium.io/cilium-configmap-checksum: f8fa116a842771c5a5fa9c3709471e9aee89918b74dd04bdc7eda1801c846075
+        cilium.io/cilium-configmap-checksum: 6324695c59e520557f2d0c223079f3f05a5250eba2c67e2569cd9ba76e9168b0
         kubectl.kubernetes.io/default-container: cilium-agent
         meta.helm.sh/release-name: cilium
         meta.helm.sh/release-namespace: kube-system
@@ -16104,9 +16103,9 @@ spec:
               divisor: "1"
               resource: limits.memory
         - name: KUBERNETES_SERVICE_HOST
-          value: 192.168.3.5
+          value: localhost
         - name: KUBERNETES_SERVICE_PORT
-          value: "6443"
+          value: "7445"
         - name: KUBE_CLIENT_BACKOFF_BASE
           value: "1"
         - name: KUBE_CLIENT_BACKOFF_DURATION
@@ -16264,9 +16263,9 @@ spec:
               apiVersion: v1
               fieldPath: metadata.namespace
         - name: KUBERNETES_SERVICE_HOST
-          value: 192.168.3.5
+          value: localhost
         - name: KUBERNETES_SERVICE_PORT
-          value: "6443"
+          value: "7445"
         image: quay.io/cilium/cilium:v1.18.3@sha256:5649db451c88d928ea585514746d50d91e6210801b300c897283ea319d68de15
         imagePullPolicy: IfNotPresent
         name: config
@@ -16342,9 +16341,9 @@ spec:
               name: cilium-config
               optional: true
         - name: KUBERNETES_SERVICE_HOST
-          value: 192.168.3.5
+          value: localhost
         - name: KUBERNETES_SERVICE_PORT
-          value: "6443"
+          value: "7445"
         image: quay.io/cilium/cilium:v1.18.3@sha256:5649db451c88d928ea585514746d50d91e6210801b300c897283ea319d68de15
         imagePullPolicy: IfNotPresent
         name: clean-cilium-state
@@ -16570,9 +16569,9 @@ spec:
               apiVersion: v1
               fieldPath: metadata.namespace
         - name: KUBERNETES_SERVICE_HOST
-          value: 192.168.3.5
+          value: localhost
         - name: KUBERNETES_SERVICE_PORT
-          value: "6443"
+          value: "7445"
         image: quay.io/cilium/cilium-envoy:v1.34.10-1761014632-c360e8557eb41011dfb5210f8fb53fed6c0b3222@sha256:ca76eb4e9812d114c7f43215a742c00b8bf41200992af0d21b5561d46156fd15
         imagePullPolicy: IfNotPresent
         livenessProbe:
