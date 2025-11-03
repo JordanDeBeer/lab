@@ -1,0 +1,23 @@
+[tools]
+cilium-cli = "latest"
+helm = "latest"
+kpt = "v1.0.0-beta.59"
+kubectl = "latest"
+sops = "latest"
+talosctl = "latest"
+
+[tasks.gen-cilium]
+run = "kubectl kustomize --enable-helm kubernetes/cilium > talos/cilium/cilium.yaml"
+description = "helm templates cilium"
+
+[tasks.tapply]
+run = [
+  "sops -d ./talos/controlplane.enc.yaml > ./talos/controlplane.yaml",
+  "talosctl -e 192.168.3.2 apply-config -n 192.168.3.2 -f ./talos/controlplane.yaml -p @./talos/host1.yaml",
+  "talosctl -e 192.168.3.3 apply-config -n 192.168.3.3 -f ./talos/controlplane.yaml -p @./talos/host2.yaml",
+  "talosctl -e 192.168.3.4 apply-config -n 192.168.3.4 -f ./talos/controlplane.yaml -p @./talos/host3.yaml",
+  "rm ./talos/controlplane.yaml"
+]
+
+[tasks.kapply]
+run = "kubectl kustomize --enable-helm ./kubernetes/ | kubectl apply --server-side -f -"
